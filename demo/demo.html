@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="demoApp" ng-controller="DemoCtrl">
+<head>
+    <title>angular-growl demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.js"></script>
+    
+    <link themer ng-model="theme.selected">
+
+    <script src="../src/themer.js"></script>
+    <script src="demo.js"></script>
+</head>
+<body>
+    <select ng-model="theme.selected" ng-options="style.href as style.label for style in theme.styles"></select>
+    <h1>angular-themer example</h1>
+    <p>Themer switches css styles on the fly.</p>
+</body>
+</head>
+</html>
