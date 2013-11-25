@@ -1,6 +1,6 @@
 {
   "name": "angular-themer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Directive for AngularJS to switch css themes",
   "repository": {
     "type": "git",
