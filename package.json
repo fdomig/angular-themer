@@ -2,7 +2,11 @@
   "name": "angular-themer",
   "version": "0.0.1",
   "description": "Directive for AngularJS to switch css themes",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fdomig/angular-themer"
+  },
+  "main": "src/themer.js",
   "scripts": {
     "test": "grunt karma"
   },
@@ -11,7 +15,10 @@
     "theme",
     "css"
   ],
-  "author": "Franziskus Domig <fdomig@gmail.com>",
+  "author": {
+    "name": "Franziskus Domig",
+    "email": "domig@gmail.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "karma": "~0.10",
