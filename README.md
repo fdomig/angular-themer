@@ -18,7 +18,7 @@ Alternatively you could download the `src` folder manually and include it in you
 ````
 <html>
 	<head>
-	    <title>angular-growl demo</title>
+	    <title>angular-themer demo</title>
     	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.js"></script>
     	<script src="../src/themer.js"></script>
     	<!-- Include selected theme -->
