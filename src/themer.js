@@ -18,7 +18,7 @@ angular.module('angular-themer', [])
 				styles: _styles,
 				selected: _selected
 			};
-		}]
+		}];
 
 	})
 
