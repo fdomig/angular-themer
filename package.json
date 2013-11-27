@@ -1,6 +1,6 @@
 {
   "name": "angular-themer",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Directive for AngularJS to switch css themes",
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "karma": "~0.10",
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1",
+    "grunt-push-release": "0.1.8",
     "grunt-karma": "~0.5.0"
   }
 }
