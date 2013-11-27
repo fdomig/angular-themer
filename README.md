@@ -1,7 +1,5 @@
 # AngularJS Theme Switcher
 
-
-
 ## Features
 
 * Add option to select themes in your angular application
@@ -39,16 +37,23 @@ In your module, add themer dependency and configure.
 angular.module('yourModule', ['angular-themer'])
 	.config(['themerProvider', function (themerProvider) {
 		var styles = [
-			{ label: 'Dark Theme', href: 'dark.css'},
-			{ label: 'Light Theme', href: 'light.css'}
+			{ key: 'DARK', label: 'Dark Theme', href: 'dark.css'},
+			{ key: 'LIGHT', label: 'Light Theme', href: 'light.css'}
 		];
 		themerProvider.setStyles(styles);
-		themerProvider.setSelected(styles[0]);
+		themerProvider.setSelected(styles[0].key);
 	}])
 ;
 ````
 
 ## Changelog
+
+### 0.2.2
+
+* Removed `setSelected()`
+* Added `select(key)` instead
+* Added `key` to each style
+* Added watchers to watch internal changes
 
 ### 0.2.1
 

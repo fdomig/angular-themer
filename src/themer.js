@@ -3,20 +3,37 @@ angular.module('angular-themer', [])
 	.provider('themer', function() {
 		"use strict";
 
-		var _styles = [], _selected = { label: '', href: '' };
+		var _styles = [], _selected = { label: '', href: '' }, _watchers = [];
 
 		this.setStyles = function (styles) {
 			_styles = styles;
 		};
 
-		this.setSelected = function (selected) {
-			_selected = selected;
+		var addWatcher = function (watcher) {
+			_watchers.push(watcher);
+		};
+
+		var getSelected = function () {
+			return angular.copy(_selected);
+		};
+
+		var setSelected = this.setSelected = function (key) {
+			angular.forEach(_styles, function (style) {
+				if (style.key === key) {
+					_selected = style;
+					angular.forEach(_watchers, function (watcher) {
+						watcher(getSelected());
+					});
+				}
+			});
 		};
 
 		this.$get = [function () {
 			return {
 				styles: _styles,
-				selected: _selected
+				getSelected: getSelected,
+				setSelected: setSelected,
+				addWatcher: addWatcher
 			};
 		}];
 
@@ -31,7 +48,11 @@ angular.module('angular-themer', [])
 			replace: true,
 			scope: true,
 			controller: ['$scope', 'themer', function ($scope, themer) {
-				$scope.selected = themer.selected;
+				$scope.selected = themer.getSelected();
+
+				themer.addWatcher(function (style) {
+					$scope.selected = style;
+				});
 			}]
 		};
 
@@ -42,13 +63,18 @@ angular.module('angular-themer', [])
 
 		return {
 			restrict: 'A',
-			template: '<select ng-model="theme.selected.href" ng-options="style.href as style.label for style in theme.styles"></select>',
+			template: '<select ng-model="theme.selected"><option ng-repeat="style in theme.styles" value="{{ style.key }}">{{ style.label }}</option></select>',
 			scope: false,
 			controller: ['$scope', 'themer', function ($scope, themer) {
 				$scope.theme = {
 					styles: themer.styles,
-					selected: themer.selected
+					selected: themer.getSelected().key
 				};
+
+				$scope.$watch('theme.selected', function () {
+					if (!$scope.theme.selected) { return; }
+					themer.setSelected($scope.theme.selected);
+				});
 			}]
 		};
 	})
