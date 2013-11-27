@@ -50,8 +50,7 @@ angular.module('yourModule', ['angular-themer'])
 
 ### 0.2.2
 
-* Removed `setSelected()`
-* Added `select(key)` instead
+* Removed `setSelected()`; added `setSelected(key)` instead
 * Added `key` to each style
 * Added watchers to watch internal changes
 
