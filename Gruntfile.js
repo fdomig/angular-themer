@@ -2,6 +2,7 @@ module.exports = function (grunt) {
 
 	grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-push-release');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	var userConfig = {
@@ -36,7 +37,7 @@ module.exports = function (grunt) {
 
         push: {
             options: {
-                files: ['package.json'],
+                files: ['package.json', 'bower.json'],
                 add: true,
                 addFiles: ['.'], // '.' for all files except ingored files in .gitignore
                 commit: true,
@@ -53,6 +54,13 @@ module.exports = function (grunt) {
             }
         },
 
+        copy: {
+            main: {
+                src: '<%= src_dir %>/themer.js',
+                dest: '<%= compile_dir%>/themer.js'
+            }
+        },
+
         /**
          * Uglify the JS sources
          */
@@ -65,7 +73,7 @@ module.exports = function (grunt) {
                     report: 'min'
                 },
                 files: {
-                    '<%= compile_dir %>/themer.min.js': '<%= src_dir %>/themer.js'
+                    '<%= compile_dir %>/themer.min.js': '<%= compile_dir %>/themer.js'
                 }
             }
         },
@@ -86,7 +94,7 @@ module.exports = function (grunt) {
      * Compile lib for deployment.
      */
     grunt.registerTask('compile', [
-        'uglify'
+        'copy', 'uglify'
     ]);
 
 };
