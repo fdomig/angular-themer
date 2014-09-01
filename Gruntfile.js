@@ -2,15 +2,21 @@ module.exports = function (grunt) {
 
 	grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-push-release');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	var userConfig = {
         src_dir: 'src',
-        vendor_dir: 'vendor',
         build_dir: 'build',
-        compile_dir: 'compile'
+        compile_dir: 'dist'
     };
 
 	var taskConfig = {
+
+        /**
+         * We read in our `package.json` file so we can access the package name and
+         * version. It's already there, so we don't repeat ourselves here.
+         */
+        pkg: grunt.file.readJSON("package.json"),
 		
 		/**
          * The Karma configurations.
@@ -45,10 +51,42 @@ module.exports = function (grunt) {
                 npmTag: 'Release v%VERSION%',
                 gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' // options to use with '$ git describe'
             }
+        },
+
+        /**
+         * Uglify the JS sources
+         */
+        uglify: {
+            compile: {
+                options: {
+                    banner: '<%= meta.banner %>',
+                    exportAll: true,
+                    mangle: false,
+                    report: 'min'
+                },
+                files: {
+                    '<%= compile_dir %>/themer.min.js': '<%= src_dir %>/themer.js'
+                }
+            }
+        },
+
+        meta: {
+            banner: '/**\n' +
+                ' * <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+                ' * <%= pkg.homepage %>\n' +
+                ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
+                ' */\n'
         }
 
 	};
 
 	grunt.initConfig(grunt.util._.extend(taskConfig, userConfig));
+
+    /**
+     * Compile lib for deployment.
+     */
+    grunt.registerTask('compile', [
+        'uglify'
+    ]);
 
 };

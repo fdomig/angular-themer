@@ -13,7 +13,7 @@ angular.module('angular-themer', [])
 			_watchers.push(watcher);
 		};
 
-		var getSelected = function () {
+		var getSelected = this.getSelected = function () {
 			return angular.copy(_selected);
 		};
 
