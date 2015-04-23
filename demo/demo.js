@@ -2,9 +2,9 @@ angular.module('demoApp', ['angular-themer'])
 
 	.config(['themerProvider', function (themerProvider) {
 		var styles = [
-			{ key: 'DARK', label: 'Dark Theme', href: 'dark.css'},
-			{ key: 'LIGHT', label: 'Light Theme', href: 'light.css'},
-			{ key: 'DRACULA', label: 'Dracula Theme', href: 'dracula.css'}
+			{ key: 'LIGHT', label: 'Light Theme', href: 'demo/light.css'},
+			{ key: 'DARK', label: 'Dark Theme', href: 'demo/dark.css'},
+			{ key: 'DRACULA', label: 'Dracula Theme', href: 'demo/dracula.css'}
 		];
 
 		themerProvider.setStyles(styles);
