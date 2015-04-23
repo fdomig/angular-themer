@@ -5,6 +5,10 @@
 * Add option to select themes in your angular application
 * Configurable via app configuration.
 
+## Demo
+
+Check out angular-themer in action at the <a href="http://fdomig.github.io/angular-themer">demo page</a>.
+
 ## Installation
 
 You can install angular-themer with:
