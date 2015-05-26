@@ -42,13 +42,16 @@ angular.module('yourModule', ['angular-themer'])
 	.config(['themerProvider', function (themerProvider) {
 		var styles = [
 			{ key: 'DARK', label: 'Dark Theme', href: 'dark.css'},
-			{ key: 'LIGHT', label: 'Light Theme', href: 'light.css'}
+			{ key: 'LIGHT', label: 'Light Theme', href: ['light.css', 'fonts.css']}
 		];
 		themerProvider.setStyles(styles);
 		themerProvider.setSelected(styles[0].key);
 	}])
 ;
 ````
+
+The `href` property can be either a string for a single css file or an array of strings for
+multiple css files.
 
 ## Changelog
 
