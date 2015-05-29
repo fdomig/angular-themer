@@ -55,9 +55,14 @@ multiple css files.
 
 ## Changelog
 
+### 0.3.0
+
+* Added ability to add a class to theme selector
+* BREAKING CHANGE: Any css which assumes the `select` will be a child element will probably break
+
 ### 0.2.6
 
-* Add support for multiple css files per style
+* Added support for multiple css files per style
 
 ### 0.2.2
 
