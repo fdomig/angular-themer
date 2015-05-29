@@ -1,6 +1,6 @@
 {
   "name": "angular-themer",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "main": "dist/themer.min.js",
   "ignore": [
     "demo", "node_modules", "src", ".gitignore", "Gruntfile.js", "karma-unit.js", "index.html"
