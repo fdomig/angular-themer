@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="demoApp" ng-controller="DemoCtrl">
+<html ng-app="demoApp">
 <head>
     <title>angular-themer demo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.js"></script>
@@ -45,16 +45,13 @@
     var styles = [
       { key: 'LIGHT', label: 'Light Theme', href: 'demo/light.css'},
       { key: 'DARK', label: 'Dark Theme', href: 'demo/dark.css'},
-      { key: 'DRACULA', label: 'Dracula Theme', href: 'demo/dracula.css'}
+      { key: 'DRACULA', label: 'Dracula Theme', href: ['demo/dracula.css', 'demo/header-size.css']}
     ];
 
     themerProvider.setStyles(styles);
     themerProvider.setSelected(styles[0].key);
   }])
 
-  .controller('DemoCtrl', function() {
-    
-  })
 ;</pre></code>
 
 <p>In your <code>index.html</code> you have to include <code>themer.js</code> and add the
@@ -68,7 +65,7 @@ themes you may include the <code>theme-switcher</code>-directive anywhere in you
     &lt;script src=&quot;app/demo-app.js&quot;&gt;&lt;/script&gt;
     &lt;link themer-link&gt;
   &lt;/head&gt;
-  &lt;body ng-controller=&quot;DemoController as demo&quot;&gt;
+  &lt;body&gt;
     &lt;div themer-switcher&gt;&lt;/div&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>

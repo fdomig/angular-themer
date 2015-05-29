@@ -11,6 +11,4 @@ angular.module('demoApp', ['angular-themer'])
 		themerProvider.setSelected(styles[0].key);
 	}])
 
-	.controller('DemoCtrl', function($scope) {
-		
-	});
+;
