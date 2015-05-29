@@ -55,6 +55,10 @@ multiple css files.
 
 ## Changelog
 
+### 0.2.6
+
+* Add support for multiple css files per style
+
 ### 0.2.2
 
 * Removed `setSelected()`; added `setSelected(key)` instead
