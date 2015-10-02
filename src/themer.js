@@ -69,18 +69,18 @@ angular.module('angular-themer', [])
 
 		return {
 			restrict: 'A',
-			template: '<select ng-model="theme.selected"><option ng-repeat="style in theme.styles" value="{{ style.key }}">{{ style.label }}</option></select>',
+			template: '<select ng-model="theme.selected" ng-options="style.key as style.label for style in theme.styles"></select>',
 			replace: true,
 			scope: false,
 			controller: ['$scope', 'themer', function ($scope, themer) {
 				$scope.theme = {
 					styles: themer.styles,
-					selected: themer.getSelected()
+					selected: themer.getSelected().key
 				};
 
 				$scope.$watch('theme.selected', function () {
-					if (!$scope.theme.selected.key) { return; }
-					themer.setSelected($scope.theme.selected.key);
+					if (!$scope.theme.selected) { return; }
+					themer.setSelected($scope.theme.selected);
 				});
 			}]
 		};

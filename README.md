@@ -55,6 +55,10 @@ multiple css files.
 
 ## Changelog
 
+### 0.3.1
+
+* Bugfix: fix not working ng-repeat in theme options (#5)
+
 ### 0.3.0
 
 * Added ability to add a class to theme selector
