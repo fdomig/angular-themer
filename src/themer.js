@@ -3,7 +3,7 @@ angular.module('angular-themer', [])
 	.provider('themer', function() {
 		"use strict";
 
-		var _styles = [], _selected = { label: '', href: [''] }, _watchers = [];
+		var _storeTheme = false, _styles = [], _selected = { label: '', href: [''] }, _watchers = [];
 
 		this.setStyles = function (styles) {
 			_styles = styles;
@@ -13,6 +13,16 @@ angular.module('angular-themer', [])
 				if (style.href === undefined || style.href === null) style.href = [];
 				if (!Array.isArray(style.href)) style.href = [style.href];
 			});
+		};
+
+		this.storeTheme = function (boolean) {
+			if (typeof  boolean !== 'boolean') { return }
+			_storeTheme = boolean;
+		};
+
+		this.getStoredTheme = function() {
+			if (!_storeTheme || !localStorage) { return; }
+			return localStorage.getItem('selectedTheme');
 		};
 
 		var addWatcher = function (watcher) {
@@ -37,6 +47,7 @@ angular.module('angular-themer', [])
 		this.$get = [function () {
 			return {
 				styles: _styles,
+				storeTheme: _storeTheme,
 				getSelected: getSelected,
 				setSelected: setSelected,
 				addWatcher: addWatcher
@@ -81,6 +92,10 @@ angular.module('angular-themer', [])
 				$scope.$watch('theme.selected', function () {
 					if (!$scope.theme.selected) { return; }
 					themer.setSelected($scope.theme.selected);
+
+					if (themer.storeTheme && localStorage) {
+						localStorage.setItem('selectedTheme', $scope.theme.selected);
+					}
 				});
 			}]
 		};

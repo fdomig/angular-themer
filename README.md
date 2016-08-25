@@ -44,8 +44,11 @@ angular.module('yourModule', ['angular-themer'])
 			{ key: 'DARK', label: 'Dark Theme', href: 'dark.css'},
 			{ key: 'LIGHT', label: 'Light Theme', href: ['light.css', 'fonts.css']}
 		];
+		themerProvider.storeTheme(true);
 		themerProvider.setStyles(styles);
-		themerProvider.setSelected(styles[0].key);
+
+		var selected = themerProvider.getStoredTheme() || styles[0].key;
+		themerProvider.setSelected(selected);
 	}])
 ;
 ````
@@ -54,6 +57,10 @@ The `href` property can be either a string for a single css file or an array of 
 multiple css files.
 
 ## Changelog
+
+### 0.4.0
+
+* Added ability to store the selected theme in `localStorage` [@Adrion](https://github.com/Adrion)
 
 ### 0.3.1
 
