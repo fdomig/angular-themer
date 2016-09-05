@@ -48,12 +48,15 @@
       { key: 'DRACULA', label: 'Dracula Theme', href: ['demo/dracula.css', 'demo/header-size.css']}
     ];
 
+    themerProvider.storeTheme(true);
     themerProvider.setStyles(styles);
-    themerProvider.setSelected(styles[0].key);
+
+    var selected = themerProvider.getStoredTheme() || styles[0].key;
+    themerProvider.setSelected(selected);
   }])
 
 ;</pre></code>
-
+<p>You can store in <code>localStorage</code> the selected theme with <code>themerProvider.storeTheme(true);</code> </p>
 <p>In your <code>index.html</code> you have to include <code>themer.js</code> and add the
   <code>themer-link</code> directive to a <code>link</code>-element in the html header. To change the
 themes you may include the <code>theme-switcher</code>-directive anywhere in your document.</p>

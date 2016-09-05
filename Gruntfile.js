@@ -93,6 +93,9 @@ module.exports = function (grunt) {
     /**
      * Compile lib for deployment.
      */
+    grunt.registerTask('default', [
+        'copy', 'uglify'
+    ]);
     grunt.registerTask('compile', [
         'copy', 'uglify'
     ]);

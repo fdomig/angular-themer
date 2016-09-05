@@ -6,9 +6,11 @@ angular.module('demoApp', ['angular-themer'])
 			{ key: 'DARK', label: 'Dark Theme', href: ['demo/dark.css']},
 			{ key: 'DRACULA', label: 'Dracula Theme', href: ['demo/dracula.css', 'demo/header-size.css']}
 		];
-
+		themerProvider.storeTheme(true);
 		themerProvider.setStyles(styles);
-		themerProvider.setSelected(styles[0].key);
+
+		var selected = themerProvider.getStoredTheme() || styles[0].key;
+		themerProvider.setSelected(selected);
 	}])
 
 ;
