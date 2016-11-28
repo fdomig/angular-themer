@@ -58,6 +58,10 @@ multiple css files.
 
 ## Changelog
 
+### 0.4.1
+
+* Add getter/setter for styles [@AahmedOpeyemi](https://github.com/ahmedOpeyemi)
+
 ### 0.4.0
 
 * Added ability to store the selected theme in `localStorage` [@Adrion](https://github.com/Adrion)
