@@ -15,6 +15,10 @@ angular.module('angular-themer', [])
 			});
 		};
 
+		var getStyles = this.getStyles = function () {
+			return angular.copy(_styles)
+		}
+
 		this.storeTheme = function (boolean) {
 			if (typeof  boolean !== 'boolean') { return }
 			_storeTheme = boolean;
@@ -46,11 +50,11 @@ angular.module('angular-themer', [])
 
 		this.$get = [function () {
 			return {
-				styles: _styles,
 				storeTheme: _storeTheme,
 				getSelected: getSelected,
 				setSelected: setSelected,
-				addWatcher: addWatcher
+				addWatcher: addWatcher,
+				getStyles: getStyles
 			};
 		}];
 
